@@ -10,6 +10,9 @@ Greasemonkey script so sort Soundcloud search results by likes
 - search song
 - the top bar should show a "sort by likes" button
 
+## To fix
+* button only appears when loading the search page
+
 ## Plannes Features
 * sort by any value
 * sort any page
