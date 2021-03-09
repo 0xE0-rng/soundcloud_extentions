@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SoundCloud Extentions
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.15
 // @description  Only works on the soundcloud search page so far, sorts loades songs by likes
 // @author       xerg0n
 // @match        https://soundcloud.com/search?q=*
@@ -14,14 +14,15 @@
         node.className = "sc-button sc-button-small sc-button-responsive"
         node.innerHTML = "Sort By Likes"
         node.onclick = function (){
-            var list = Array.from(document.querySelectorAll('li.searchList__item')).sort(function(a, b) {
+            var list = Array.from(document.querySelectorAll('li div.searchItem__trackItem'))
+            var sorted = [...list].sort(function(a, b) {
                 var a_likes = parseNumber(a.querySelector('.sc-button-like').innerText)
                 var b_likes = parseNumber(b.querySelector('.sc-button-like').innerText)
                 return b_likes-a_likes;
             });
 
             for (var i = 0; i < list.length; i++) {
-                list[i].parentNode.appendChild(list[i]);
+                list[i].parentNode.appendChild(sorted[i])
             }
         }
         document.querySelector('.searchResultGroupHeading').appendChild(node)
