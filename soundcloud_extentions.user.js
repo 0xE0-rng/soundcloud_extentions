@@ -4,7 +4,7 @@
 // @version      0.15
 // @description  Only works on the soundcloud search page so far, sorts loades songs by likes
 // @author       xerg0n
-// @match        https://soundcloud.com/search?q=*
+// @match        https://soundcloud.com/*
 // @grant        none
 // ==/UserScript==
 (function() {
@@ -38,5 +38,8 @@
             await new Promise(r => setTimeout(r, 500));
         }
     }
-    waitFor(".searchResultGroupHeading").then(append);
+    function appyWaitFor(){
+        waitFor(".searchResultGroupHeading").then(append);
+    }
+    window.addEventListener("change", appyWaitFor);
 })();
