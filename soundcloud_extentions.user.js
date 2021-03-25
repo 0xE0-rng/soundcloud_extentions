@@ -1,12 +1,31 @@
 // ==UserScript==
 // @name         SoundCloud Extentions
 // @namespace    http://tampermonkey.net/
-// @version      0.20
+// @version      0.21
 // @description  Only works on the soundcloud search page so far, sorts loades songs by likes
 // @author       xerg0n
 // @match        https://soundcloud.com/*
 // @grant        none
 // ==/UserScript==
+
+// https://stackoverflow.com/a/52809105
+history.pushState = ( f => function pushState(){
+    var ret = f.apply(this, arguments);
+    window.dispatchEvent(new Event('pushstate'));
+    window.dispatchEvent(new Event('locationchange'));
+    return ret;
+})(history.pushState);
+
+history.replaceState = ( f => function replaceState(){
+    var ret = f.apply(this, arguments);
+    window.dispatchEvent(new Event('replacestate'));
+    window.dispatchEvent(new Event('locationchange'));
+    return ret;
+})(history.replaceState);
+
+window.addEventListener('popstate',()=>{
+    window.dispatchEvent(new Event('locationchange'))
+});
 (function() {
     'use strict';
     var append = function(){
@@ -64,13 +83,13 @@
         }
     }
     function changeListener(){
-        console.log("oh?")
-            waitFor(".searchTitle__text").then(maybeappend);
+      setTimeout(() => { waitFor(".resultCounts").then(maybeappend)}, 500)
     }
     function maybeappend(){
-         var elementExists = document.getElementById("filterbox");
+        var elementExists = document.getElementById("filterbox");
         if (!elementExists){
             append()
+        }else{
         }
     }
     var elements = document.querySelectorAll("a");
@@ -79,4 +98,5 @@
     }
     window.addEventListener("change", changeListener);
     window.addEventListener("load", changeListener);
+    window.addEventListener('locationchange', changeListener);
 })();
