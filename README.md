@@ -11,10 +11,9 @@ Greasemonkey script so sort Soundcloud search results by likes
 - the top bar should show a "sort by likes" button
 
 ## Bugs
-* ?
+- ?
 
 ## Plannes Features
 * remove pro only songs
-* sort by any value
 * sort any page
 * preload songs
