@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SoundCloud Extentions
 // @namespace    http://tampermonkey.net/
-// @version      0.25
+// @version      0.26
 // @description  Only works on the soundcloud search page so far, sorts loades songs by likes
 // @author       xerg0n
 // @match        https://soundcloud.com/*
@@ -65,8 +65,9 @@ window.addEventListener('popstate',()=>{
             for (var i = 0; i < list.length; i++) {
                 list[i].parentNode.appendChild(sorted[i])
             }
-    }
         }
+        return fun
+    }
 /*     function hideReposts(){
      for (var a of document.querySelectorAll('.soundContext__repost')){
          a.parentNode.parentNode.parentNode.parentNode.style.display = 'none'
