@@ -15,5 +15,6 @@ Greasemonkey script so sort Soundcloud search results by likes
 
 ## Plannes Features
 * remove pro only songs
+* filter reposts
 * sort any page
 * preload songs
