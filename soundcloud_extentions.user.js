@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         SoundCloud Extentions
 // @namespace    http://tampermonkey.net/
-// @version      0.26
+// @version      0.27
 // @description  Only works on the soundcloud search page so far, sorts loades songs by likes
-// @author       xerg0n
+// @author       0xE0-rng
 // @match        https://soundcloud.com/*
 // @grant        none
 // ==/UserScript==
@@ -49,9 +49,32 @@ window.addEventListener('popstate',()=>{
         select.style = "appearance: none;"
         select.className = "sc-button sc-button-small"
 
+        var autoscroll = document.createElement("div");
+        autoscroll.id = "filterbox";
+        autoscroll.style = "float: right;"
+        autoscroll.innerHTML = '<div id="autoscroll" style="float: right;"><button type="button" aria-describedby="tooltip-39699" tabindex="0" class="ssc-button-secondary sc-button sc-button-small sc-button-responsive" title="Autoscroll To Preload Songs">🚗</button></div>'
+
+        document.querySelector('.searchTitle__text').appendChild(autoscroll)
+
         container.appendChild(select)
         document.querySelector('.searchTitle__text').appendChild(container)
+
+        var autobuton = document.getElementById("autoscroll")
+        autobuton.onclick = scroll
+
+
         console.log("appended")
+    }
+    function scroll(){
+        var i = 0;
+        var timer = setInterval(function() {
+            window.scrollBy(0, 20000);
+            console.log(++i);
+            if (i === 8){
+                clearInterval(timer);
+                window.scrollBy(0, -500000000);
+            }
+        }, 400);
     }
     function reorder(itemSel, sortKey){
         var fun = function (){
