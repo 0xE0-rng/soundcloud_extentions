@@ -17,9 +17,9 @@ Greasemonkey script so sort Soundcloud search results by likes
 
 
 ## Features
-- sort by *Likes*
-- sort by *Repots*
-- *Autoscroll* to bottom a couple of times to preload songs in the UI
+- sort by **Likes**
+- sort by **Repots**
+- **Autoscroll** to bottom a couple of times to preload songs in the UI
 
 ## Limitations
 - Only the visible DOM will be sorted, so the songs have to be loaded to be sorted. For this reason the autoscroll button exists
