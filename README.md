@@ -1,6 +1,7 @@
 # Soundcloud Extentions
 Greasemonkey script so sort Soundcloud search results by likes
 
+![image](https://user-images.githubusercontent.com/14735397/208704299-d1135e2d-b407-47f2-969c-9d0ca909871a.png)
 
 ## Installation
 - Install Tempermonkey for [firefox](https://tampermonkey.net/?ext=dhdg&browser=firefox) or [chrome](https://tampermonkey.net/?ext=dhdg&browser=chrome)
@@ -11,9 +12,9 @@ Greasemonkey script so sort Soundcloud search results by likes
 - search song
 - the top bar should show a "sort by likes" button
 - (optional) click the autoscroll button to preload some songs then can then be sorted
-- Demo:
 
-![image](https://user-images.githubusercontent.com/14735397/208704299-d1135e2d-b407-47f2-969c-9d0ca909871a.png)
+
+
 
 ## Features
 - sort by Likes
